@@ -118,7 +118,7 @@ label:focus {
   height: 19px;
   border: 1px solid #fff;
 }
-.search-form__label:has(input:checked) .search-form__pseudo-checkbox::after {
+.search-form__label:has(:checked) .search-form__pseudo-checkbox::after {
   content: "";
   width: 15px;
   height: 15px;
@@ -174,7 +174,7 @@ label:focus {
 .content__details {
   display: flex;
   flex-direction: column;
-  gap: 26px;
+  gap: 23px;
   inline-size: 35%;
   block-size: 534px;
 }
@@ -190,13 +190,12 @@ label:focus {
 }
 .content__list {
   position: relative;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: auto;
   inline-size: 399px;
   block-size: 298px;
 }
 .content__list-item:not(:last-child) {
-  margin-bottom: 30px;
+  margin-bottom: 28px;
 }
 .content__card-link {
   display: block;
@@ -229,10 +228,10 @@ label:focus {
   outline-offset: 1px;
 }
 .content__video-card-title {
+  overflow: hidden;
   font-family: "Oswald", sans-serif;
   font-weight: 700;
   font-size: 30px;
-  line-height: 100%;
   text-transform: uppercase;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -241,13 +240,17 @@ label:focus {
   margin-block-end: 6px;
 }
 .content__video-card-description {
+  overflow: hidden;
   font-family: "Fira Sans Condensed", sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 90%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .content__video-card-thumbnail {
   object-fit: cover;
+  object-position: center;
   inline-size: 49.24%;
   block-size: 35.9%;
 }
