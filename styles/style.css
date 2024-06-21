@@ -9,13 +9,17 @@ html {
 }
 
 .page {
-  inline-size: 1200px;
-  block-size: 100%;
   margin: auto;
   color: #fff;
-  font-family: 'Fira Sans Condensed', sans-serif;
+  font-family: "Fira Sans Condensed", sans-serif;
   font-size: 18px;
   background-color: #1b1919;
+  inline-size: 1200px;
+  block-size: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 h1,
@@ -35,4 +39,219 @@ fieldset {
 ul,
 ol {
   list-style: none;
+}
+button,
+label {
+  cursor: pointer;
+}
+button,
+label:focus {
+  outline: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  inline-size: 1px;
+  block-size: 1px;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.content {
+  display: flex;
+  align-items: end;
+  gap: 30px;
+  inline-size: 1140px;
+}
+.result {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  inline-size: 62.3%;
+}
+.result__video-container {
+  position: relative;
+  inline-size: 100%;
+  block-size: 100%;
+}
+.result__video {
+  max-height: 386px;
+  object-fit: cover;
+  inline-size: 100%;
+  block-size: 100%;
+}
+.search-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+.search-form__fieldset {
+  border: none;
+  appearance: none;
+}
+.search-form__fieldset-title {
+  font-weight: 400;
+  font-size: inherit;
+  font-family: "Fira Sans Condensed", sans-serif;
+  margin-block-end: 5px;
+}
+.search-form__checkbox-list {
+  display: flex;
+  align-items: center;
+  column-gap: 15px;
+}
+.search-form__label {
+  display: flex;
+  column-gap: 5px;
+  align-items: center;
+  width: fit-content;
+  appearance: none;
+}
+
+.search-form__pseudo-checkbox {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 19px;
+  height: 19px;
+  border: 1px solid #fff;
+}
+.search-form__label:has(input:checked) .search-form__pseudo-checkbox::after {
+  content: "";
+  width: 15px;
+  height: 15px;
+  background-color: #fff;
+}
+.search-form__label:has(:hover) .search-form__label-text {
+  text-decoration: underline;
+}
+.search-form__label:has(:active) .search-form__label-text {
+  text-decoration: none;
+}
+
+.search-form__label:has(:focus-visible) {
+  outline: 1px solid currentColor;
+  outline-offset: 1px;
+}
+
+.search-form__textfield {
+  color: rgba(255, 255, 255, 0.7);
+  background-color: transparent;
+  border-bottom: 1px solid #fff;
+  border-top: 1px solid #fff;
+  border-left: none;
+  border-right: none;
+  font-size: 18px;
+  line-height: 22px;
+  font-family: inherit;
+  inline-size: 225px;
+}
+
+.button {
+  border: 1px solid currentColor;
+  color: currentColor;
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  background-color: transparent;
+}
+.button:hover {
+  text-decoration: underline;
+}
+.button:active {
+  background-color: #545050;
+  text-decoration: none;
+}
+.button:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 1px;
+}
+.search-form__submit-button {
+  padding: 6px 73.5px;
+}
+.content__details {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  inline-size: 35%;
+  block-size: 534px;
+}
+.title {
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  font-size: 75px;
+  line-height: 94%;
+  text-transform: uppercase;
+}
+.content__accent {
+  color: #545050;
+}
+.content__list {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  inline-size: 399px;
+  block-size: 298px;
+}
+.content__list-item:not(:last-child) {
+  margin-bottom: 30px;
+}
+.content__card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  margin: 2px;
+}
+
+.content__video-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.content__video-card-description-container {
+  inline-size: 50.76%;
+  max-inline-size: 200px;
+}
+.content__card-link:has(:hover) .content__video-card-description-container {
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+}
+
+.content__card-link_current {
+  background-color: #545050;
+  text-decoration: none;
+}
+.content__list-item:has(:focus-visible).content__card-link {
+  outline: 1px solid currentColor;
+  outline-offset: 1px;
+}
+.content__video-card-title {
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 100%;
+  text-transform: uppercase;
+  font-family: "Oswald", sans-serif;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.content__video-card-title:not(:last-child) {
+  margin-block-end: 6px;
+}
+.content__video-card-description {
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 90%;
+}
+.content__video-card-thumbnail {
+  object-fit: cover;
+  inline-size: 49.24%;
+  block-size: 35.9%;
+}
+.more-button {
+  width: 100%;
+  padding: 6px 0px;
 }
