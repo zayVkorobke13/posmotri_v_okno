@@ -44,9 +44,14 @@ button,
 label {
   cursor: pointer;
 }
+ul,
+li,
+a,
 button,
-label:focus {
+label,
+input[type="text"]:focus {
   outline: none;
+  outline-offset: 0;
 }
 
 .visually-hidden {
@@ -63,6 +68,7 @@ label:focus {
   display: flex;
   align-items: end;
   gap: 30px;
+  margin-top: 5px;
   inline-size: 1140px;
 }
 .result {
@@ -73,14 +79,14 @@ label:focus {
 }
 .result__video-container {
   position: relative;
+  max-height: 386px;
   inline-size: 100%;
   block-size: 100%;
 }
 .result__video {
-  max-height: 386px;
   object-fit: cover;
   inline-size: 100%;
-  block-size: 100%;
+  block-size: 386px;
 }
 .search-form {
   display: flex;
@@ -101,6 +107,8 @@ label:focus {
   display: flex;
   align-items: center;
   column-gap: 15px;
+
+  margin-block-end: 5px;
 }
 .search-form__label {
   display: flex;
@@ -109,7 +117,21 @@ label:focus {
   width: fit-content;
   appearance: none;
 }
-
+.search-form__textfield {
+  border-top: 1px solid #fff;
+  border-right: none;
+  border-bottom: 1px solid #fff;
+  border-left: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: inherit;
+  font-size: 18px;
+  background-color: transparent;
+  inline-size: 225px;
+}
+.search-form__label:has(:active) .search-form__textfield {
+  border: 1px solid #fff;
+  outline-offset: 0;
+}
 .search-form__pseudo-checkbox {
   display: inline-flex;
   justify-content: center;
@@ -118,10 +140,12 @@ label:focus {
   height: 19px;
   border: 1px solid #fff;
 }
+
 .search-form__label:has(:checked) .search-form__pseudo-checkbox::after {
   content: "";
   width: 15px;
   height: 15px;
+  text-decoration: none;
   background-color: #fff;
 }
 .search-form__label:has(:hover) .search-form__label-text {
@@ -131,24 +155,18 @@ label:focus {
   text-decoration: none;
 }
 
+.search-form__label:focus {
+  outline: none;
+  outline-offset: 0;
+}
 .search-form__label:has(:focus-visible) {
   outline: 1px solid currentColor;
   outline-offset: 1px;
 }
 
-.search-form__textfield {
-  border-top: 1px solid #fff;
-  border-right: none;
-  border-bottom: 1px solid #fff;
-  border-left: none;
-  color: rgba(255, 255, 255, 0.7);
-  font-family: inherit;
-  font-size: 18px;
-  line-height: 22px;
-  background-color: transparent;
-  inline-size: 225px;
+.search-form__label:has(:active) .search-form__label-text {
+  text-decoration: none;
 }
-
 .button {
   border: 1px solid currentColor;
   color: currentColor;
@@ -174,9 +192,8 @@ label:focus {
 .content__details {
   display: flex;
   flex-direction: column;
-  gap: 23px;
+  gap: 20px;
   inline-size: 35%;
-  block-size: 534px;
 }
 .title {
   font-family: "Oswald", sans-serif;
@@ -195,43 +212,49 @@ label:focus {
   block-size: 298px;
 }
 .content__list-item:not(:last-child) {
-  margin-bottom: 28px;
+  margin-bottom: 35px;
 }
 .content__card-link {
   display: block;
-  margin: 2px;
+  margin: 3px;
   color: inherit;
   text-decoration: none;
 }
-
+.content__card-link_current {
+  text-decoration: none;
+  background-color: #545050;
+}
 .content__video-card {
   display: flex;
   justify-content: space-between;
   align-items: start;
+  gap: 10px;
+}
+.content__video-card-description-container {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  inline-size: 194px;
+  white-space: nowrap;
 }
 
-.content__video-card-description-container {
-  inline-size: 50.76%;
-  max-inline-size: 200px;
+.content__card-link:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 1px;
 }
 .content__card-link:has(:hover) .content__video-card-description-container {
   text-decoration: underline;
   text-decoration-skip-ink: none;
 }
-
-.content__card-link_current {
+.content__card-link:has(:active) .content__video-card-description-container {
   text-decoration: none;
-  background-color: #545050;
 }
-.content__list-item:has(:focus-visible).content__card-link {
-  outline: 1px solid currentColor;
-  outline-offset: 1px;
-}
+
 .content__video-card-title {
   overflow: hidden;
   font-family: "Oswald", sans-serif;
   font-weight: 700;
   font-size: 30px;
+  line-height: 100%;
   text-transform: uppercase;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -250,11 +273,12 @@ label:focus {
 }
 .content__video-card-thumbnail {
   object-fit: cover;
-  object-position: center;
-  inline-size: 49.24%;
-  block-size: 35.9%;
+  object-position: left;
+  inline-size: 200px;
+  block-size: 103px;
 }
 .more-button {
-  width: 100%;
+  width: 99%;
+  margin: 2px;
   padding: 6px 0px;
 }
