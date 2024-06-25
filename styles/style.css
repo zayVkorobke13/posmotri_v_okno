@@ -107,7 +107,6 @@ input[type="text"]:focus {
   display: flex;
   align-items: center;
   column-gap: 15px;
-
   margin-block-end: 5px;
 }
 .search-form__label {
@@ -117,21 +116,31 @@ input[type="text"]:focus {
   width: fit-content;
   appearance: none;
 }
+.search-form__label:focus {
+  outline: none;
+  outline-offset: 0;
+}
+.search-form__label:has(:focus-visible) {
+  outline: 1px solid currentColor;
+  outline-offset: 1px;
+}
 .search-form__textfield {
   border-top: 1px solid #fff;
   border-right: none;
   border-bottom: 1px solid #fff;
   border-left: none;
+  outline: none;
   color: rgba(255, 255, 255, 0.7);
   font-family: inherit;
   font-size: 18px;
   background-color: transparent;
   inline-size: 225px;
 }
-.search-form__label:has(:active) .search-form__textfield {
-  border: 1px solid #fff;
-  outline-offset: 0;
+
+.search-form__textfield:active {
+  border: 1px solid transparent;
 }
+
 .search-form__pseudo-checkbox {
   display: inline-flex;
   justify-content: center;
@@ -155,18 +164,6 @@ input[type="text"]:focus {
   text-decoration: none;
 }
 
-.search-form__label:focus {
-  outline: none;
-  outline-offset: 0;
-}
-.search-form__label:has(:focus-visible) {
-  outline: 1px solid currentColor;
-  outline-offset: 1px;
-}
-
-.search-form__label:has(:active) .search-form__label-text {
-  text-decoration: none;
-}
 .button {
   border: 1px solid currentColor;
   color: currentColor;
@@ -221,9 +218,9 @@ input[type="text"]:focus {
   text-decoration: none;
 }
 .content__card-link_current {
-  text-decoration: none;
   background-color: #545050;
 }
+
 .content__video-card {
   display: flex;
   justify-content: space-between;
@@ -235,20 +232,22 @@ input[type="text"]:focus {
   text-overflow: ellipsis;
   inline-size: 194px;
   white-space: nowrap;
+  max-block-size: 103px;
 }
 
 .content__card-link:focus-visible {
   outline: 1px solid currentColor;
   outline-offset: 1px;
 }
-.content__card-link:has(:hover) .content__video-card-description-container {
+.content__card-link:has(:hover) .content__video-card {
   text-decoration: underline;
   text-decoration-skip-ink: none;
 }
-.content__card-link:has(:active) .content__video-card-description-container {
-  text-decoration: none;
-}
 
+.content__card-link:has(:active) .content__video-card {
+  text-decoration: none;
+  background-color: #545050;
+}
 .content__video-card-title {
   overflow: hidden;
   font-family: "Oswald", sans-serif;
@@ -268,8 +267,7 @@ input[type="text"]:focus {
   font-weight: 400;
   font-size: 18px;
   line-height: 90%;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  white-space: wrap;
 }
 .content__video-card-thumbnail {
   object-fit: cover;
